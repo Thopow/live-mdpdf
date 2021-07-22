@@ -1,0 +1,21 @@
+#!/bin/bash
+#Use: live-mdpdf file.md output.pdf
+
+OUT="$2"
+[[ -z $OUT ]] && OUT="$1.pdf"
+
+[[ ! -e ${PWD}/$1 ]] && touch ${PWD}/$1
+
+open-out(){
+	if ! pgrep -x "zathura" > /dev/null
+	then
+	    zathura ${PWD}/$OUT &
+	fi
+}
+
+${EDITOR} $1 &
+
+while inotifywait -e modify ${PWD}/$1 ; do
+	pandoc ${PWD}/$1 -t ms -o ${PWD}/$OUT 
+	open-out
+done
