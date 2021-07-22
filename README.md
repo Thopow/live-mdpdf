@@ -18,7 +18,7 @@ Just copy or link the script live-mdpdf to your ${PATH} directory.
 
 `$ live-mdpdf file.md output.pdf`
 
-If you don't give an argument, `$ live-mdpdf`, your editor will ask you for a file name at your first save. 
+You need to give at least the first argument `file-name.md`
 If output file is not given, the script will default to "file.md.pdf"
 
 ---
