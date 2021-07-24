@@ -1,10 +1,11 @@
 #!/bin/bash
 #Use: live-mdpdf file.md output.pdf
-
+NAME="$1"
+[[ -z $NAME ]] && read -p "Please enter document name: " NAME
 OUT="$2"
-[[ -z $OUT ]] && OUT="$1.pdf"
+[[ -z $OUT ]] && OUT="$NAME.pdf"
 
-[[ ! -e ${PWD}/$1 ]] && touch ${PWD}/$1
+[[ ! -e ${PWD}/$NAME ]] && touch ${PWD}/$NAME
 
 open-out(){
 	if ! pgrep -x "zathura" > /dev/null
@@ -13,9 +14,9 @@ open-out(){
 	fi
 }
 
-${EDITOR} $1 &
+${EDITOR} $NAME &
 
-while inotifywait -e modify ${PWD}/$1 ; do
-	pandoc ${PWD}/$1 -t ms -o ${PWD}/$OUT 
+while inotifywait -e modify ${PWD}/$NAME ; do
+	pandoc ${PWD}/$NAME -t ms -o ${PWD}/$OUT 
 	open-out
 done
