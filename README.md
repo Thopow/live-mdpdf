@@ -7,6 +7,7 @@ This small script let you create Documents without a Word-Processor and monitor 
 ## Use of the script
 
 ### Dependencies
+- pandoc
 - zathura PDF viewer (To update the previewe on save)
 - inotify
 - Text Editor
@@ -18,7 +19,7 @@ Just copy or link the script live-mdpdf to your ${PATH} directory.
 
 `$ live-mdpdf file.md output.pdf`
 
-You need to give at least the first argument `file-name.md`
+If no argument is given, the script will ask for the name.
 If output file is not given, the script will default to "file.md.pdf"
 
 ---
