@@ -8,7 +8,7 @@ This small script let you create Documents without a Word-Processor and monitor 
 
 ### Dependencies
 - pandoc
-- groff
+- wkhtmltopdf
 - zathura PDF viewer (To update the previewe on save)
 - inotify
 - Text Editor
